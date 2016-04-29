@@ -140,6 +140,10 @@ public abstract class Router {
         return !backStack.isEmpty();
     }
 
+    protected Screen peek() {
+        return backStack.peek();
+    }
+
     private boolean tryHandleEmptyBackstack(final Screen screen) {
         if (backStack.isEmpty()) {
             final Scoop newScoop = screenScooper.createScreenScoop(screen, root);
