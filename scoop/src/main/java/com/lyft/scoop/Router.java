@@ -5,9 +5,9 @@ import java.util.List;
 
 public abstract class Router {
 
-    private ScoopBackstack backStack = new ScoopBackstack();
+    public ScoopBackstack backStack = new ScoopBackstack();
     private ScreenScooper screenScooper;
-    private Scoop root;
+    public Scoop root;
     private boolean allowEmptyStack;
 
     public Router(ScreenScooper screenScooper) {
@@ -141,7 +141,7 @@ public abstract class Router {
     }
 
     protected Screen peek() {
-        return backStack.peek();
+        return Screen.fromScoop(backStack.peek());
     }
 
     private boolean tryHandleEmptyBackstack(final Screen screen) {
