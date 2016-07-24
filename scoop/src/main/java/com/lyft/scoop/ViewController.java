@@ -4,9 +4,10 @@ import android.view.View;
 
 public abstract class ViewController {
 
-    private boolean attached;
-    private Scoop scoop;
-    private View view;
+    public boolean attached;
+    public Scoop scoop;
+    public View view;
+    public boolean destroyOnDetach = true;
 
     final void attach(View view) {
         this.attached = true;
@@ -22,8 +23,11 @@ public abstract class ViewController {
 
     final void detach(View view) {
         onDetach();
-        this.view = null;
-        this.attached = false;
+
+        if (destroyOnDetach) {
+            this.view = null;
+            this.attached = false;
+        }
     }
 
     public void onDetach() {}
